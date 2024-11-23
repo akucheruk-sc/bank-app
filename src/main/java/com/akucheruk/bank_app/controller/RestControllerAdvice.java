@@ -1,6 +1,6 @@
 package com.akucheruk.bank_app.controller;
 
-import com.akucheruk.bank_app.domain.dto.ErrorMsg;
+import com.akucheruk.bank_app.domain.dto.out.ErrorMsg;
 import com.akucheruk.bank_app.exception.DataAlreadyExistException;
 import com.akucheruk.bank_app.exception.DataNotFoundException;
 import lombok.extern.slf4j.Slf4j;

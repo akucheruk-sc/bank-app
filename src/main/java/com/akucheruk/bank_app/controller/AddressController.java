@@ -1,6 +1,6 @@
 package com.akucheruk.bank_app.controller;
 
-import com.akucheruk.bank_app.domain.dto.AddressDto;
+import com.akucheruk.bank_app.domain.dto.out.AddressDto;
 import com.akucheruk.bank_app.domain.entity.Address;
 import com.akucheruk.bank_app.service.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -67,7 +67,7 @@ public class AddressController {
             @ApiResponse(responseCode = "404", description = "address not found"),
     })
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(value = HttpStatus.ACCEPTED) //TODO fix?
+    @ResponseStatus(value = HttpStatus.ACCEPTED)
     public Address updateAddress(
             @PathVariable UUID id,
             @RequestBody AddressDto addressDto) {

@@ -1,4 +1,4 @@
-package com.akucheruk.bank_app.domain.dto;
+package com.akucheruk.bank_app.domain.dto.out;
 
 import com.akucheruk.bank_app.domain.entity.AddressState;
 import jakarta.validation.constraints.Max;

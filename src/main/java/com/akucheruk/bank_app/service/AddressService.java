@@ -1,12 +1,12 @@
 package com.akucheruk.bank_app.service;
 
-import com.akucheruk.bank_app.domain.dto.AddressDto;
+import com.akucheruk.bank_app.domain.dto.out.AddressDto;
 import com.akucheruk.bank_app.domain.entity.Address;
 import com.akucheruk.bank_app.domain.entity.AddressState;
 import com.akucheruk.bank_app.exception.DataAlreadyExistException;
 import com.akucheruk.bank_app.exception.DataNotFoundException;
 import com.akucheruk.bank_app.mapper.AddressMapper;
-import com.akucheruk.bank_app.repository.AddressRepository;
+import com.akucheruk.bank_app.repository.address.AddressRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

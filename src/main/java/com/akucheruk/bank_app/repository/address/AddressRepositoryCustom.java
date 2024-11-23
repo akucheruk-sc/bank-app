@@ -1,4 +1,4 @@
-package com.akucheruk.bank_app.repository;
+package com.akucheruk.bank_app.repository.address;
 
 import com.akucheruk.bank_app.domain.entity.Address;
 import com.akucheruk.bank_app.domain.entity.AddressState;
