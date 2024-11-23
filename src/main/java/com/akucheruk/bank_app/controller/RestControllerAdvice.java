@@ -6,16 +6,14 @@ import com.akucheruk.bank_app.exception.DataNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Slf4j
-@ControllerAdvice(annotations = RestController.class)
-public class RestControllerAdvice {
+public class RestControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(DataNotFoundException.class)
-    public ResponseEntity<?> handleDataNotFoundException(DataNotFoundException ex) {
+    public ResponseEntity<Object> handleDataNotFoundException(DataNotFoundException ex) {
         log.warn("Handle {} exception, message: {}", ex.getClass().getName(), ex.getMessage());
         var errMsg = ErrorMsg.builder()
                 .httpStatus(HttpStatus.NOT_FOUND)
@@ -26,7 +24,7 @@ public class RestControllerAdvice {
     }
 
     @ExceptionHandler(DataAlreadyExistException.class)
-    public ResponseEntity<?> handleDataAlreadyExistException(DataAlreadyExistException ex) {
+    public ResponseEntity<Object> handleDataAlreadyExistException(DataAlreadyExistException ex) {
         log.warn("Handle {} exception, message: {}", ex.getClass().getName(), ex.getMessage());
         var errMsg = ErrorMsg.builder()
                 .httpStatus(HttpStatus.BAD_REQUEST)
