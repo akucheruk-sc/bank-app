@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: bank-app
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bank_app_db?currentSchema=public
+    username: @db.username@
+    password: @db.password@
