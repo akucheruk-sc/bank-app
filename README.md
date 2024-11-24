@@ -9,7 +9,10 @@
 ```console
 mvnw flyway:migrate
 ```
-OR run PostgreSQL in docker  
+OR run PostgreSQL in docker using command:
+```console
+docker compose up
+```
 
 ## Open API
 Swagger UI url: http://localhost:8080/swagger-ui/index.html

@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:17.2
+    environment:
+      POSTGRES_DB: "bank_app_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "12344321"
+    ports:
+      - "5432:5432"
