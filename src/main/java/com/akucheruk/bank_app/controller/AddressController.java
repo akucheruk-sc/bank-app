@@ -1,11 +1,12 @@
 package com.akucheruk.bank_app.controller;
 
-import com.akucheruk.bank_app.domain.dto.out.AddressDto;
+import com.akucheruk.bank_app.domain.dto.in.AddressDto;
 import com.akucheruk.bank_app.domain.entity.Address;
 import com.akucheruk.bank_app.service.AddressService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+@Tag(name = "Address controller", description = "Contains all operation with addresses")
 @Validated
 @RestController
 @RequiredArgsConstructor
@@ -62,8 +64,7 @@ public class AddressController {
 
     @Operation(summary = "Update current addresses")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "addresses updated"),
-            @ApiResponse(responseCode = "400", description = "arguments not valid"),
+            @ApiResponse(responseCode = "202", description = "addresses updated"),
             @ApiResponse(responseCode = "404", description = "address not found"),
     })
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

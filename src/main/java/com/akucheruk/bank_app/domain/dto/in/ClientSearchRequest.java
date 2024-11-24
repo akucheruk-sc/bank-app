@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class ClientRequest {
+public class ClientSearchRequest {
     String firstName;
     String lastName;
     Boolean isActive;

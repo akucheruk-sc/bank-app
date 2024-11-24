@@ -1,5 +1,7 @@
 package com.akucheruk.bank_app.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -15,6 +17,10 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false, exclude = {"client"})
+@JsonPropertyOrder(value = {
+        "accountId", "number", "currency", "type", "amount",
+        "isActive", "createDate", "modifyDate", "transactions"
+})
 @Entity
 @Table(name = "account")
 public class Account extends StartAndUpdateDate {
@@ -39,6 +45,7 @@ public class Account extends StartAndUpdateDate {
     @NotNull
     private BigDecimal amount = BigDecimal.ZERO;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "accounts")
     private List<Client> client;
 

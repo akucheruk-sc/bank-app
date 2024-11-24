@@ -1,5 +1,6 @@
 package com.akucheruk.bank_app.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
@@ -23,9 +24,14 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false, exclude = {"address", "accounts"})
+@JsonPropertyOrder(value = {
+        "clientId", "firstName", "lastName", "middleName",
+        "isActive", "isActive", "createDate", "modifyDate",
+        "address", "accounts"
+})
 @Entity
 @Table(name = "client")
-public class Client {
+public class Client extends StartAndUpdateDate {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID clientId;
@@ -40,8 +46,8 @@ public class Client {
 
     private boolean isActive = true;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    @ManyToOne
+    @JoinColumn(name="address_id", nullable=false)
     private Address address;
 
     @ManyToMany(cascade = { CascadeType.ALL })

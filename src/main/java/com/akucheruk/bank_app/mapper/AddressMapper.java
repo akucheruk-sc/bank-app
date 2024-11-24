@@ -1,6 +1,6 @@
 package com.akucheruk.bank_app.mapper;
 
-import com.akucheruk.bank_app.domain.dto.out.AddressDto;
+import com.akucheruk.bank_app.domain.dto.in.AddressDto;
 import com.akucheruk.bank_app.domain.entity.Address;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

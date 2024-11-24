@@ -1,7 +1,16 @@
 package com.akucheruk.bank_app.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -9,12 +18,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false, exclude = {"client"})
+@EqualsAndHashCode(callSuper=false, exclude = {"clients"})
+@JsonPropertyOrder(value = {
+        "addressId", "houseNumber", "street", "postCode",
+        "state", "createDate", "modifyDate"
+})
 @Entity
 @Table(name = "address")
 public class Address extends StartAndUpdateDate {
@@ -38,6 +52,6 @@ public class Address extends StartAndUpdateDate {
     private AddressState state;
 
     @JsonBackReference
-    @OneToOne(mappedBy = "address")
-    private Client client;
+    @OneToMany(mappedBy = "address")
+    private List<Client> clients;
 }

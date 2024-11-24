@@ -1,6 +1,6 @@
 package com.akucheruk.bank_app.service;
 
-import com.akucheruk.bank_app.domain.dto.out.AddressDto;
+import com.akucheruk.bank_app.domain.dto.in.AddressDto;
 import com.akucheruk.bank_app.domain.entity.Address;
 import com.akucheruk.bank_app.domain.entity.AddressState;
 import com.akucheruk.bank_app.exception.DataAlreadyExistException;
@@ -50,7 +50,7 @@ public class AddressService {
     public Address updateAddress(UUID id, AddressDto addressDto) {
         var currentAddress = addressRepository
                 .findById(id)
-                .orElseThrow(() -> new DataNotFoundException("id: " + id, Address.class));
+                .orElseThrow(() -> new DataNotFoundException("addressId: " + id, Address.class));
         currentAddress = addressMapper.updateAddress(currentAddress, addressDto);
         return addressRepository.save(currentAddress);
     }
@@ -59,16 +59,8 @@ public class AddressService {
     public void deleteAddress(UUID id) {
         addressRepository
                 .findById(id)
-                .orElseThrow(() -> new DataNotFoundException("id: " + id, Address.class));
+                .orElseThrow(() -> new DataNotFoundException("addressId: " + id, Address.class));
         addressRepository.deleteById(id);
     }
-/*
-    public Page<AddressView> getAddressesByState(AddressState state, Pageable pageable) {
-        return addressRepository.findAllByState(state, pageable);
-    }
-
-    public Page<AddressView> getAddressesByPostCode(Integer postCode, Pageable pageable) {
-        return addressRepository.findAllByPostCode(postCode, pageable);
-    }*/
 
 }

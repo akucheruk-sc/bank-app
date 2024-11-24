@@ -1,0 +1,20 @@
+[
+  {
+    "addressId": "57f284d3-313a-4529-9d8b-e681e44b457c",
+    "houseNumber": "354",
+    "street": "Cloud Dr",
+    "postCode": 553230,
+    "state": "MINNESOTA",
+    "createDate": null,
+    "modifyDate": null
+  },
+  {
+    "addressId": "06e74b8d-7b0a-4564-b180-82cde54df3fb",
+    "houseNumber": "8232",
+    "street": "Highway Rd",
+    "postCode": 553230,
+    "state": "OTHER",
+    "createDate": null,
+    "modifyDate": null
+  }
+]
